@@ -126,6 +126,24 @@ def listar_cursos():
     print(f"Listado de Cursos registrados: {cadena[:-2]} ")
     print(tabulate(cursos, headers="keys", tablefmt="psql"))
 
+def agregar_curso(codigo, nombre, duracion_horas, fecha_inicio, fecha_fin,estudiantes_permitidos, cedula_profesor,estudiantes_matriculados):
+    datos_curso = {
+
+            'codigo_curso': codigo,
+            'nombre': nombre,
+            'duracion_horas':duracion_horas,
+            'fecha_inicio': fecha_inicio,
+            'fecha_fin': fecha_fin,
+            'estudiantes_permitidos': estudiantes_permitidos,
+            'cedula_profesor': cedula_profesor,
+            'estudiantes_matriculados': estudiantes_matriculados
+
+    }
+    cursos.append(datos_curso)
+    print("El curso se agrego de forma exitosa!")
+    print("")
+    listar_cursos()
+
 def reg_cursos():
     print("REGISTRO DE CURSOS")
     listar_cursos()
@@ -133,6 +151,16 @@ def reg_cursos():
     registrar = input('¿Desea registrar un nuevo curso? si/no: ')
     if registrar == 'si':
         print("Ingresar Curso")
+        codigo_curso = input('Ingresar codigo del curso:')
+        nombre = input('Ingresar Nombre del Curso: ')
+        duracion_horas = input('Ingresar duracion en horas: ')
+        fecha_inicio = input('Ingresar Fecha de Inicio: ')
+        fecha_fin = input('Ingresar Fecha de Finalizacion: ')
+        estudiantes_permitidos = input('Ingresar estudiantes permitidos: ')
+        cedula_profesor = input('Ingresar cedula del profesor: ')
+        estudiantes_matriculados = []
+        agregar_curso(codigo_curso, nombre, duracion_horas, fecha_inicio, fecha_fin, estudiantes_permitidos, cedula_profesor,estudiantes_matriculados)
+
 
 ################################################################################################################
 # Funciones de Tabla Profesores
@@ -321,7 +349,7 @@ def cursos_matricular(cedula_alumno,codigo_curso):
     indice_curso = cursos_buscar_indice(codigo_curso)
     indice_alumno = alumnos_buscar_indice(cedula_alumno)
     #print(indice_alumno)
-    if len(curso['estudiantes_matriculados']) <  curso['estudiantes_permitidos']:
+    if len(curso['estudiantes_matriculados']) <  int(curso['estudiantes_permitidos']):
         cursos[indice_curso]['estudiantes_matriculados'].append(cedula_alumno)
         alumnos[indice_alumno]['cursos_matriculados'].append(codigo_curso)
         notas = {'codigo_curso': codigo_curso,
