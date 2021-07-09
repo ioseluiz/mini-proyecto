@@ -356,25 +356,25 @@ def consultas():
             nombre = cursos_buscar(curso)['nombre']
             print(nombre)
             print("")
-        main()
+        menu()
     elif opcion == '2':
         cedula = input('Ingrese la cedula del profesor: ')
         consulta_cursos_dictados_profesor(cedula)
-        main()
+        menu()
     elif opcion == '3':
         cedula = input('Ingrese la cedula del estudiante: ')
         consulta_cursos_evaluaciones_alumno(cedula)
-        main()
+        menu()
     elif opcion == '4':
         consulta_curso_mayor_cant_estudiantes()
-        main()
+        menu()
     elif opcion == '5':
-        main()
+        menu()
 
 
 ###################################################################################################################################################
 
-def main():
+def menu():
 
     #print(profesores)
     #print(cursos)
@@ -431,8 +431,6 @@ def main():
             break
         else:
             print("error opcion no valida")
-
-if __name__ == '__main__':
-    main()
+menu()
 
  
