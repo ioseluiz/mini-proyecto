@@ -1,116 +1,27 @@
 from tabulate import tabulate
 
-profesores = [
-
-    {
-    'cedula': '8-111-333',
-    'nombre': 'Kevin',
-    'apellido': 'Jimenez',
-    'direccion': 'Bella Vista calle 77',
-    'telefono': '6345-7845'
-    },
-    {
-     'cedula': '8-222-444',
-    'nombre': 'Antonio',
-    'apellido': 'Gonzalez',
-    'direccion': 'San Francisco calle 53',
-    'telefono': '6345-7845'   
-    }
-
-]
-
- 
-
-cursos = [{
-            'codigo_curso': '001',
-            'nombre': 'ingles',
-            'duracion_horas': 60,
-            'fecha_inicio': '2021-07-30',
-            'fecha_fin': '2021-10-31',
-            'estudiantes_permitidos': 30,
-            'cedula_profesor': '8-222-444',
-            'estudiantes_matriculados': ['8-791-273']
-    },
-    {
-            'codigo_curso': '002',
-            'nombre': 'Fisica',
-            'duracion_horas': 80,
-            'fecha_inicio': '2021-08-30',
-            'fecha_fin': '2021-12-31',
-            'estudiantes_permitidos': 25,
-            'cedula_profesor': '8-111-333',
-            'estudiantes_matriculados': ['8-791-273','9-790-2372'] 
-    },
-
-        {
-            'codigo_curso': '003',
-            'nombre': 'Matematicas',
-            'duracion_horas': 100,
-            'fecha_inicio': '2021-08-30',
-            'fecha_fin': '2021-12-31',
-            'estudiantes_permitidos': 15,
-            'cedula_profesor': '8-111-333',
-            'estudiantes_matriculados': [] 
-    }
-
-    ]
-
-empresas = [
-    {
-    'nombre': "Banco General",
-    'direccion': "Costa del Este via principal",
-    'telefono': '270-0101'
-    },
-    {
-         'nombre': "ACP",
-        'direccion': "Balboa Ancon",
-        'telefono': '276-1010'
-    }
-]
-
-alumnos = [
-
-        {
-            'cedula': '8-791-273',
-            'nombre':'Jose',
-            'apellido': 'Munoz',
-            'edad': 23,
-            'direccion': 'Villa Lucre calle 20',
-            'telefono': '6888-8888',
-            'trabaja':'si',
-            'nombre_empresa': 'ACP',
-            'cursos_matriculados': ['001','002'],
-            'notas':[{'codigo_curso': '001', 'evaluacion': 97},
-                    {'codigo_curso': '002', 'evaluacion': 95}]
-        },
-        {
-            'cedula': '9-790-2372',
-            'nombre':'Maria',
-            'apellido': 'Robles',
-            'edad': 28,
-            'direccion': 'Santiago calle 2',
-            'telefono': '6634-2020',
-            'trabaja':'no',
-            'nombre_empresa': '',
-            'cursos_matriculados': ['002'],
-            'notas':[{'codigo_curso': '002', 'evaluacion': 80}
-                    ]
-        }
-    ]
+profesores = []
+cursos = []
+empresas = []
+alumnos = []
 
 #####################################################################################################
 # Funciones de Tabla Cursos
 def cursos_buscar(codigo_curso):
-    for curso in cursos:
-        if codigo_curso == curso['codigo_curso']:
-            return curso
-        else:
-            resultado = "No existe ese curso"
+    if cursos:
+        for curso in cursos:
+            if codigo_curso == curso['codigo_curso']:
+                return curso
+            else:
+                resultado = "No existe ese curso"
+    else:
+        resultado = "No existe ese curso"
     return resultado
 
  
 
 def cursos_buscar_indice(codigo_curso):
+    resultado = ''
     for curso in cursos:
         if codigo_curso == curso['codigo_curso']:
             return cursos.index(curso)
@@ -165,11 +76,14 @@ def reg_cursos():
 ################################################################################################################
 # Funciones de Tabla Profesores
 def profesores_buscar(cedula):
-    for profesor in profesores:
-        if cedula == profesor['cedula']:
-            return profesor
-        else:
-            resultado = "No existe ese profesor"
+    if profesores:
+        for profesor in profesores:
+            if cedula == profesor['cedula']:
+                return profesor
+            else:
+                resultado = "No existe ese profesor"
+    else:
+        resultado = "No existe ese profesor"
     return resultado
 
 def profesores_agregar(cedula, nombre, apellido, direccion, telefono):
@@ -265,20 +179,26 @@ def listar_alumnos():
 
  
 def alumnos_buscar(cedula):
-    for alumno in alumnos:
-        if cedula == alumno['cedula']:
-            return alumno
-        else:
-            resultado = "No existe ese alumno"
+    if alumnos:
+        for alumno in alumnos:
+            if cedula == alumno['cedula']:
+                return alumno
+            else:
+                resultado = "No existe ese alumno"
+    else:
+        resultado = "No existe ese alumno"
     return resultado
 
  
 def alumnos_buscar_indice(cedula):
-    for alumno in alumnos:
-        if cedula == alumno['cedula']:
-            return alumnos.index(alumno)
-        else:
-            resultado = "No existe este alumno"
+    if alumnos:
+        for alumno in alumnos:
+            if cedula == alumno['cedula']:
+                return alumnos.index(alumno)
+            else:
+                resultado = "No existe este alumno"
+    else:
+        resultado = "No existe este alumno"
 
     return resultado
 
@@ -286,11 +206,14 @@ def alumnos_buscar_indice(cedula):
 ###############################################################################################################
 # Funciones de Tabla Empresas
 def empresas_buscar(nombre):
-    for empresa in empresas:
-        if nombre == empresa['nombre']:
-            return empresa
-        else:
-            resultado = "No existe esta empresa"
+    if empresas:
+        for empresa in empresas:
+            if nombre == empresa['nombre']:
+                return empresa
+            else:
+                resultado = "No existe esta empresa"
+    else:
+        resultado = "No existe esta empresa"
 
         return resultado
 
