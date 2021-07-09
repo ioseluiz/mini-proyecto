@@ -206,6 +206,7 @@ def alumnos_buscar_indice(cedula):
 ###############################################################################################################
 # Funciones de Tabla Empresas
 def empresas_buscar(nombre):
+    
     if empresas:
         for empresa in empresas:
             if nombre == empresa['nombre']:
@@ -215,7 +216,7 @@ def empresas_buscar(nombre):
     else:
         resultado = "No existe esta empresa"
 
-        return resultado
+    return resultado
 
 
 def empresas_agregar(nombre, direccion, telefono):
@@ -228,9 +229,11 @@ def empresas_agregar(nombre, direccion, telefono):
         }
         empresas.append(datos_empresa)
         mensaje = "Empresa agregada satisfactoriamente"
+        
         return mensaje
 
     return "Ya existe una empresa con ese nombre"
+
 def mostrar_empresas():
     cadena = ""
     for empresa in empresas:
@@ -250,7 +253,7 @@ def registro_empresas():
         direccion = input('Ingresar direccion de la Empresa: ')
         telefono = input('Ingresar telefono de la Empresa: ')
         empresas_agregar(nombre, direccion, telefono)
-        print('Alumno registrado de forma exitosa!')
+        print('Empresa registrada de forma exitosa!')
         print("")
         mostrar_empresas()
         print("")
